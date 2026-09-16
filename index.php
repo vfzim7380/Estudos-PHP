@@ -12,8 +12,8 @@
         <nav>
             <a href="#usuario">Usuario</a>
             <a href="#sensivel">Dados sensíveis</a>
-            <a href="#">Historico Médico</a>
-            <a href="#">Saude</a>
+            <a href="#saude">Saude</a>
+            <a href="#medico">Historico Médico</a>
         </nav>
     </aside>
 </div>
@@ -25,7 +25,7 @@
             <input type="text" id="nome" name="nome" required><br><br>
 
             <label for="idade">Idade:</label>
-            <input type="number" id="idade" name="idade" required><br><br>    
+            <input type="date" id="idade" name="idade" required><br><br>    
             
             <label for="sexo">Sexo:</label> 
             <select id="sexo" name="sexo">
@@ -68,7 +68,74 @@
     </div>
 
     <div name="tabela-cad" id="sensivel">
+                <h1>Dados Sensiceis</h1>
+        <form action="sensiveis/cad_sensivel.php" method="POST">            
+            <label for="sexo">Cor ou raça:</label> 
+            <select id="sexo" name="sexo">
+                <option value="">Selecione</option> 
+                <option value="branco">Branco</option>
+                <option value="preto">Preto</option>
+                <option value="pardo">Pardo</option>
+                <option value="amarelo">Amarelo</option>  
+                <option value="indigina">Indigina</option>
+            </select><br></br>
 
+            <label for="civil">Religião:</label> 
+            <input type="text" id="religiao" name="religiao" required><br><br>
+
+            <input type="submit" value="Cadastrar">
+        </form>
+    </div>
+
+    <div name="tabela-cad" id="saude">
+        <h1>Dados de Saúde</h1>
+        <form action="saude/cad_saude.php" method="POST">
+            <label for="exames">Exames:</label>
+            <input type="text" id="exames" name="exames" required><br><br>
+
+            <label for="anamnese">Anamnese:</label>
+            <input type="text" id="anamnese" name="anamnese" required><br><br>    
+
+            <label for="pressao">Pressão arterial:</label>
+            <input type="text" id="pressao" name="pressao" required><br><br>
+
+            <label for="peso">Peso:</label>
+            <input type="number" id="peso" name="peso"required><br><br>
+
+            <label for="cardiaca">Frequência cardíaca:</label>
+            <input type="number" id="cardiaca" name="cardiaca" required><br><br>
+
+            <label for="relatorio">Relatórios clínicos:</label>
+            <input type="text" id="relatorio" name="relatorio" required><br><br>
+
+            <label for="medicamento">Medicamentos em uso:</label>
+            <input type="text" id="medicamento" name="medicamento" required><br><br>
+
+            <label for="diagnostico">Diagnósticos:</label>
+            <input type="text" id="diagnostico" name="diagnostico" required><br><br>
+
+
+            <input type="submit" value="Cadastrar">
+        </form>
+    </div>
+
+    <div name="tabela-cad" id="medico">
+        <h1>Histórico médico</h1>
+        <form action="historico/cad_historico.php" method="POST">
+            <label for="doenca">Doenças crônicas:</label>
+            <input type="text" id="doenca" name="doenca" required><br><br>
+
+            <label for="tratamento">Tratamentos anteriores:</label>
+            <input type="text" id="tratamento" name="tratamento" required><br><br>    
+
+            <label for="hospitalizacoa">Hospitalizações:</label>
+            <input type="text" id="hospitalizacoa" name="hospitalizacoa" required><br><br>
+
+            <label for="procedimento">Procedimentos realizados:</label>
+            <input type="text" id="procedimento" name="procedimento"required><br><br>
+
+            <input type="submit" value="Cadastrar">
+        </form>
     </div>
 </body>
 </html>

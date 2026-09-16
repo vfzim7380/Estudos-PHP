@@ -50,3 +50,9 @@ CREATE TABLE dados_sensiveis (
     FOREIGN KEY (idusuario) REFERENCES usuario(id_usuario),
     UNIQUE (idusuario)
 );
+
+alter table usuario
+add unique(cpf);
+
+alter table usuario
+add unique(rg);
