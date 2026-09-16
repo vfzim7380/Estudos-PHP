@@ -6,22 +6,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dados do Usuario</title>
+    <title>Dados Medicos</title>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+    <div class="navbar">
+        <aside class="sidebar">
+            <nav>
+                <a href="#usuario">Usuario</a>
+                <a href="#sensivel">Dados sensíveis</a>
+                <a href="#saude">Saude</a>
+                <a href="#medico">Historico Médico</a>
+            </nav>
+        </aside>
+    </div>
 
-<div class="navbar">
-    <aside class="sidebar">
-        <nav>
-            <a href="#usuario">Usuario</a>
-            <a href="#sensivel">Dados sensíveis</a>
-            <a href="#saude">Saude</a>
-            <a href="#medico">Historico Médico</a>
-        </nav>
-    </aside>
-</div>
-
-    <div name="tabela-cad" id="usuario">
+    <div class="tabela-cad" id="usuario">
         <h1>Dados do Usuario</h1>
         <form action="usuario/cad_usuario.php" method="POST">
             <label for="nome">Nome:</label>
@@ -70,7 +70,7 @@
         </form>
     </div>
 
-    <div name="tabela-cad" id="sensivel">
+    <div class="tabela-cad" id="sensivel">
                 <h1>Dados Sensiceis</h1>
         <form action="sensiveis/cad_sensivel.php" method="POST">
             <label for="id_usuario">Selecione o usuario:</label>
@@ -103,9 +103,23 @@
         </form>
     </div>
 
-    <div name="tabela-cad" id="saude">
+    <div class="tabela-cad" id="saude">
         <h1>Dados de Saúde</h1>
         <form action="saude/cad_saude.php" method="POST">
+            <label for="id_usuario">Selecione o usuario:</label>
+            <select name="buscar_usu" id="buscar_usu">
+                <?php
+                    $sql = "select id_usuario, nome from usuario";
+                    $resultado = $conexao -> query($sql);
+
+                    while ($usuario = $resultado->fetch_assoc()){
+                ?>
+                <option value="<?= $usuario['id_usuario'] ?>">
+                    <?= $usuario['nome'] ?>
+                </option>
+                <?php } ?>  
+            </select><br></br>
+
             <label for="exames">Exames:</label>
             <input type="text" id="exames" name="exames" required><br><br>
 
@@ -135,9 +149,23 @@
         </form>
     </div>
 
-    <div name="tabela-cad" id="medico">
+    <div class="tabela-cad" id="medico">
         <h1>Histórico médico</h1>
         <form action="historico/cad_historico.php" method="POST">
+            <label for="id_usuario">Selecione o usuario:</label>
+            <select name="buscar_usu" id="buscar_usu">
+                <?php
+                    $sql = "select id_usuario, nome from usuario";
+                    $resultado = $conexao -> query($sql);
+
+                    while ($usuario = $resultado->fetch_assoc()){
+                ?>
+                <option value="<?= $usuario['id_usuario'] ?>">
+                    <?= $usuario['nome'] ?>
+                </option>
+                <?php } ?>  
+            </select><br></br>  
+
             <label for="doenca">Doenças crônicas:</label>
             <input type="text" id="doenca" name="doenca" required><br><br>
 

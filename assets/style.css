@@ -1,0 +1,179 @@
+/* ============================================
+   Dados Médicos — folha de estilo
+   Paleta quente (bisque) + marrom escuro
+   Fontes do sistema, sem carregar nada externo
+   ============================================ */
+
+:root {
+    --fundo: bisque;
+    --card: #fffaf3;
+    --tinta: #2c2119;
+    --tinta-fraca: #6d5a48;
+    --linha: #e3cdb2;
+    --marrom: #6b3f2a;
+    --marrom-claro: #8a5638;
+    --foco: #1f6f6b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--fundo);
+    color: var(--tinta);
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* ---------- Barra de navegação ---------- */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--marrom);
+    box-shadow: 0 2px 8px rgba(44, 33, 25, 0.25);
+}
+
+.navbar nav {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 8px 16px;
+}
+
+.navbar a {
+    color: #f6e7d5;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.navbar a:hover {
+    background-color: var(--marrom-claro);
+    color: #fff;
+}
+
+.navbar a:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* ---------- Cards de cadastro (um embaixo do outro) ---------- */
+
+.tabela-cad {
+    max-width: 720px;
+    margin: 32px auto;
+    padding: 28px 32px;
+    background-color: var(--card);
+    border: 1px solid var(--linha);
+    border-left: 5px solid var(--marrom);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(107, 63, 42, 0.1);
+    scroll-margin-top: 72px; /* os links da nav não escondem o título */
+}
+
+.tabela-cad h1 {
+    margin: 0 0 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--linha);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--marrom);
+}
+
+/* ---------- Formulário ---------- */
+
+/* os <br> do HTML são neutralizados; o espaçamento vem das margens */
+.tabela-cad form br {
+    display: none;
+}
+
+.tabela-cad label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--tinta-fraca);
+}
+
+.tabela-cad input,
+.tabela-cad select {
+    display: block;
+    width: 100%;
+    margin-bottom: 18px;
+    padding: 10px 12px;
+    font: inherit;
+    color: var(--tinta);
+    background-color: #fff;
+    border: 1px solid var(--linha);
+    border-radius: 6px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tabela-cad input:focus,
+.tabela-cad select:focus {
+    outline: none;
+    border-color: var(--foco);
+    box-shadow: 0 0 0 3px rgba(31, 111, 107, 0.18);
+}
+
+.tabela-cad input::placeholder {
+    color: #b09a84;
+}
+
+/* ---------- Botão ---------- */
+
+.tabela-cad input[type="submit"] {
+    width: auto;
+    margin: 8px 0 0;
+    padding: 12px 28px;
+    background-color: var(--marrom);
+    color: #fff8f0;
+    font-weight: 600;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.tabela-cad input[type="submit"]:hover {
+    background-color: var(--marrom-claro);
+}
+
+.tabela-cad input[type="submit"]:active {
+    transform: translateY(1px);
+}
+
+.tabela-cad input[type="submit"]:focus-visible {
+    outline: 2px solid var(--foco);
+    outline-offset: 2px;
+}
+
+/* ---------- Telas pequenas ---------- */
+
+@media (max-width: 640px) {
+    .tabela-cad {
+        margin: 20px 12px;
+        padding: 20px;
+    }
+
+    .tabela-cad input[type="submit"] {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}

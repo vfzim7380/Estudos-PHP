@@ -8,6 +8,7 @@
     // Check connection
     if ($conexao->connect_error) {
         die("Connection failed: " . $conexao->connect_error);
+    } else {
+        echo"Sucesso ao se conectar";
     }
-    echo"Sucesso ao se conectar";
 ?>
