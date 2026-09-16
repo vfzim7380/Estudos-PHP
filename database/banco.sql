@@ -9,15 +9,15 @@ CREATE TABLE usuario (
     estado_civil VARCHAR(50),
     endereco VARCHAR(255),
     telefone VARCHAR(20),
-    rg VARCHAR(20),
+    rg VARCHAR(20) unique,
     email VARCHAR(150),
     convenio VARCHAR(150),
-    cpf VARCHAR(14)
+    cpf VARCHAR(14) unique
 );
 
 CREATE TABLE dados_saude (
     id_saude INT PRIMARY KEY AUTO_INCREMENT,
-    idusuario INT NOT NULL,
+    id_usuario INT NOT NULL,
     exame VARCHAR(255),
     anamnese TEXT,
     pressao_arterial VARCHAR(10),
@@ -27,32 +27,26 @@ CREATE TABLE dados_saude (
     medicamento_uso TEXT,
     diagnosticos TEXT,
 
-    FOREIGN KEY (idusuario) REFERENCES usuario(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
 CREATE TABLE historico_med (
     id_historico INT PRIMARY KEY AUTO_INCREMENT,
-    idusuario INT NOT NULL,
+    id_usuario INT NOT NULL,
     doenca_cronica TEXT,
     tratamento_anterior TEXT,
     hospitalizacoes TEXT,
     procedimentos_realizados TEXT,
 
-    FOREIGN KEY (idusuario) REFERENCES usuario(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
 CREATE TABLE dados_sensiveis (
     id_sensivel INT PRIMARY KEY AUTO_INCREMENT,
-    idusuario INT NOT NULL,
+    id_usuario INT NOT NULL,
     racial VARCHAR(255),
     religiao VARCHAR(255),
 
-    FOREIGN KEY (idusuario) REFERENCES usuario(id_usuario),
-    UNIQUE (idusuario)
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+    UNIQUE (id_usuario)
 );
-
-alter table usuario
-add unique(cpf);
-
-alter table usuario
-add unique(rg);

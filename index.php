@@ -1,3 +1,6 @@
+<?php 
+ include"config/conexao.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -69,9 +72,22 @@
 
     <div name="tabela-cad" id="sensivel">
                 <h1>Dados Sensiceis</h1>
-        <form action="sensiveis/cad_sensivel.php" method="POST">            
-            <label for="sexo">Cor ou raça:</label> 
-            <select id="sexo" name="sexo">
+        <form action="sensiveis/cad_sensivel.php" method="POST">
+            <label for="id_usuario">Selecione o usuario:</label>
+            <select name="buscar_usu" id="buscar_usu">
+                <?php
+                    $sql = "select id_usuario, nome from usuario";
+                    $resultado = $conexao -> query($sql);
+
+                    while ($usuario = $resultado->fetch_assoc()){
+                ?>
+                <option value="<?= $usuario['id_usuario'] ?>">
+                    <?= $usuario['nome'] ?>
+                </option>
+                <?php } ?>  
+            </select><br></br>  
+            <label for="cor">Cor ou raça:</label> 
+            <select id="cor" name="cor">
                 <option value="">Selecione</option> 
                 <option value="branco">Branco</option>
                 <option value="preto">Preto</option>
@@ -80,7 +96,7 @@
                 <option value="indigina">Indigina</option>
             </select><br></br>
 
-            <label for="civil">Religião:</label> 
+            <label for="religiao">Religião:</label> 
             <input type="text" id="religiao" name="religiao" required><br><br>
 
             <input type="submit" value="Cadastrar">
